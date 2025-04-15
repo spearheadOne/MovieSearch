@@ -2,9 +2,8 @@ import axios from 'axios';
 
 
 const api = axios.create({
-    baseURL: 'www.omdbapi.com',
+    baseURL: 'http://localhost:8001/api',
     params: {
-        apikey: 'your_api_key_here',
         //todo add more params
     },
 });
