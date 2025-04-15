@@ -3,7 +3,7 @@ function App() {
 
   return (
     <>
-      <h1 class="text-3x1 font-bold underline">Movie base</h1>
+      <h1 className="text-3x1 font-bold">Movie base</h1>
     </>
   )
 }
