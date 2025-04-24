@@ -1,5 +1,6 @@
 import dotenv from 'dotenv'
 import express, {Request, Response} from 'express'
+import path from 'path'
 
 dotenv.config();
 
@@ -13,13 +14,14 @@ if (!API_KEY){
     throw new Error('API Key is not set');
 }
 
+const buildPath = path.join(__dirname, '..','..', 'movie-search', 'dist');
+app.use(express.static(buildPath));
 
 //todo add api calls
 app.get('/api/search', async (req: Request, res: Response)=>{
     res.json('test')
 });
 
-
 app.listen(PORT, ()=>{
-    console.log(`OMDb Proxy is running at http://localhost:${PORT}`)
-})
+    console.log(`OMDb Server is running at http://localhost:${PORT}`)
+});
