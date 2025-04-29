@@ -1,10 +1,11 @@
 import './App.css';
+import Search from './search/Search.tsx';
 
 function App() {
   return (
     <>
-      <h1 className="text-3x1 font-bold">Movie base</h1>
-    </>
+      <Search/>
+   </>
   );
 }
 
