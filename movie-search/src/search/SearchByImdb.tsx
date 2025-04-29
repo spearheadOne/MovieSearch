@@ -1,4 +1,3 @@
-import './SearchByImdb.css';
 import Plot from './Plot.tsx';
 
 function SearchByImdb() {

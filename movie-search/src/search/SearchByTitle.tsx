@@ -1,4 +1,3 @@
-import './SearchByTitle.css';
 import Plot from './Plot.tsx';
 
 function SearchByTitle() {
