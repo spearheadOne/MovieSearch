@@ -5,9 +5,9 @@ function SearchByImdb() {
   return (
     <>
       <h1>Search by IMDB id</h1>
-       <form>
-         <Plot/>
-       </form>
+      <form>
+        <Plot />
+      </form>
     </>
   );
 }

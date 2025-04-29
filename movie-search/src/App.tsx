@@ -4,8 +4,8 @@ import Search from './search/Search.tsx';
 function App() {
   return (
     <>
-      <Search/>
-   </>
+      <Search />
+    </>
   );
 }
 
