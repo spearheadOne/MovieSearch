@@ -1,9 +1,11 @@
 import { create } from 'zustand/react';
 import api from '../lib/axios.ts';
 
-//TODO add more fields
 interface Movie {
+  Id: string;
   Title: string;
+  Year: number;
+  Plot: string;
 }
 
 //TODO add more methods
