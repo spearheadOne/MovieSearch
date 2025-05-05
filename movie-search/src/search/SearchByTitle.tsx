@@ -9,7 +9,7 @@ function SearchByTitle() {
   const [year, setYear] = useState('');
   const [plot, setPlot] = useState('short');
 
-  const fetchMovieByTitle = useMovieStore(state => state.clearMovieRequest)
+  const fetchMovieByTitle = useMovieStore(state => state.fetchMovieByTitle)
 
   return (
     <div className="space-y-8">

@@ -17,8 +17,12 @@ if (!API_KEY){
 const buildPath = path.join(__dirname, '..','..', 'movie-search', 'dist');
 app.use(express.static(buildPath));
 
-//todo add api calls
-app.get('/api/search', async (req: Request, res: Response)=>{
+//todo add handling
+app.get('/api/searchByTitle', async (req: Request, res: Response)=>{
+    res.json('test')
+});
+
+app.get('/api/searchById', async (req: Request, res: Response)=>{
     res.json('test')
 });
 
