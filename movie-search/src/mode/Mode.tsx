@@ -30,13 +30,13 @@ function Mode() {
     <div className="flex items-center gap-2">
       <span className="text-sm text-gray-800 dark:text-gray-200">Light</span>
       <label className="relative inline-flex cursor-pointer items-center">
-        <input type="checkbox" checked={theme === 'dark'}
-               onChange={switchMode} className="peer sr-only" />
-        <div
-          className="peer h-6 w-11 rounded-full bg-gray-300 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white
-                     after:transition-all after:content-[''] peer-checked:bg-blue-600
-                     peer-checked:after:translate-x-full peer-focus:outline-none"
-        ></div>
+        <input
+          type="checkbox"
+          checked={theme === 'dark'}
+          onChange={switchMode}
+          className="peer sr-only"
+        />
+        <div className="peer h-6 w-11 rounded-full bg-gray-300 peer-checked:bg-blue-600 peer-focus:outline-none after:absolute after:top-[2px] after:left-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:after:translate-x-full"></div>
       </label>
       <span className="text-sm text-gray-800 dark:text-gray-200">Dark</span>
     </div>
