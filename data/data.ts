@@ -5,7 +5,19 @@ export interface MovieRequest {
   Plot?: string;
 }
 
+export interface MovieSearchResult {
+  Title: string;
+  Year: string;
+  imdbID: string;
+  Type: string;
+  Poster: string;
+}
+
 export interface MovieResponse {
+  Response: 'True' | 'False';
+  Error?: string;
+  Search?: MovieSearchResult[];
+  totalResults?: string;
   Title?: string;
   Year?: string;
   Rated?: string;
@@ -26,9 +38,8 @@ export interface MovieResponse {
   imdbVotes?: string;
   imdbID?: string;
   Type?: string;
-  DVD?: string | null;
+  DVD?: string;
   BoxOffice?: string;
-  Production?: string | null;
-  Website?: string | null;
-  Response?: boolean;
+  Production?: string;
+  Website?: string;
 }

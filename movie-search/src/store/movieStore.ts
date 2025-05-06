@@ -1,6 +1,6 @@
 import { create } from 'zustand/react';
 import api from '../lib/axios.ts';
-import { MovieRequest, MovieResponse } from './data.ts';
+import { MovieRequest, MovieResponse } from '../../../data/data.ts';
 
 interface MovieStore {
   movieResponse: Partial<MovieResponse> | null;
@@ -27,7 +27,7 @@ export const useMovieStore = create<MovieStore>((set) => ({
     set({ error: null });
 
     try {
-      const res = await api.get('/api/searchByTitle', {
+      const res = await api.post('localhost:8001/api/searchByTitle', {
         params: {
           title: movie?.Title || '',
           year: movie?.Year || '',
@@ -49,7 +49,7 @@ export const useMovieStore = create<MovieStore>((set) => ({
     set({ error: null });
 
     try {
-      const res = await api.get('/api/searchById', {
+      const res = await api.post('localhost:8001/api/searchById', {
         params: {
           id: movie?.id || '',
           year: movie?.Year || '',

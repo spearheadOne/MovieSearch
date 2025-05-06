@@ -1,5 +1,5 @@
 import { useMovieStore } from '../store/movieStore.ts';
-import { MovieRequest } from '../store/data.ts';
+import { MovieRequest } from '../../../data/data.ts';
 
 interface SearchButtonProps {
   movieInput: MovieRequest,
