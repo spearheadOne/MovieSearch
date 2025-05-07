@@ -5,19 +5,9 @@ export interface MovieRequest {
   Plot?: string;
 }
 
-export interface MovieSearchResult {
-  Title: string;
-  Year: string;
-  imdbID: string;
-  Type: string;
-  Poster: string;
-}
-
 export interface MovieResponse {
   Response: 'True' | 'False';
   Error?: string;
-  Search?: MovieSearchResult[];
-  totalResults?: string;
   Title?: string;
   Year?: string;
   Rated?: string;
