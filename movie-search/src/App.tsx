@@ -13,7 +13,7 @@ function App() {
         </div>
         <div className="flex flex-row gap-4 px-4">
           <Search />
-          <Movie/>
+          <Movie />
         </div>
       </div>
     </>
