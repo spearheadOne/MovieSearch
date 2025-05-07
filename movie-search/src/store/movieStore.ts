@@ -9,18 +9,16 @@ interface MovieStore {
 
   setMovieRequest: (movie: Partial<MovieRequest>) => void;
   clearMovieRequest: () => void;
-  clearMovieResponse: () => void;
   fetchMovieByTitle: () => Promise<void>;
   fetchMovieById: () => Promise<void>;
 }
 
 export const useMovieStore = create<MovieStore>((set, get) => {
   const fetchMovie = async (endpoint: string) => {
-    const movie = get().movieRequest;
-    set({ error: null });
+    set({ movieResponse: null, error: null });
 
     try {
-      const res = await api.post<MovieResponse>(endpoint, movie);
+      const res = await api.post<MovieResponse>(endpoint, get().movieRequest);
 
       if (res.data?.Response === 'True') {
         set({ movieResponse: res.data });
@@ -42,7 +40,6 @@ export const useMovieStore = create<MovieStore>((set, get) => {
 
     setMovieRequest: (movie) => set({ movieRequest: movie }),
     clearMovieRequest: () => set({ movieRequest: null }),
-    clearMovieResponse: () => set({ movieResponse: null }),
     fetchMovieByTitle: () => fetchMovie('/searchByTitle'),
     fetchMovieById: () => fetchMovie('/searchById'),
   };

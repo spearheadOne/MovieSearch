@@ -1,6 +1,7 @@
 import './App.css';
 import Search from './search/Search.tsx';
 import Mode from './mode/Mode.tsx';
+import Movie from './movie/Movie.tsx';
 
 //TODO modify css in search for form switch
 function App() {
@@ -10,7 +11,10 @@ function App() {
         <div className="p-4">
           <Mode />
         </div>
-        <Search />
+        <div className="flex flex-row gap-4 px-4">
+          <Search />
+          <Movie/>
+        </div>
       </div>
     </>
   );
