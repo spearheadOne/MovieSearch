@@ -15,7 +15,6 @@ interface MovieStore {
 }
 
 export const useMovieStore = create<MovieStore>((set, get) => {
-
   const fetchMovie = async (endpoint: string) => {
     const movie = get().movieRequest;
     set({ error: null });
@@ -26,7 +25,10 @@ export const useMovieStore = create<MovieStore>((set, get) => {
       if (res.data?.Response === 'True') {
         set({ movieResponse: res.data });
       } else {
-        set({ movieResponse: null, error: res.data?.Error || 'No movies found' });
+        set({
+          movieResponse: null,
+          error: res.data?.Error || 'No movies found',
+        });
       }
     } catch (err: any) {
       set({ error: err.message || 'Failed to fetch movies' });

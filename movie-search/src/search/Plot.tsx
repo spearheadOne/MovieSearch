@@ -3,7 +3,7 @@ interface PlotProps {
   onChange: (value: string) => void;
 }
 
-function Plot({value, onChange}: PlotProps) {
+function Plot({ value, onChange }: PlotProps) {
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor="plot" className="text-sm text-gray-600">
@@ -20,7 +20,6 @@ function Plot({value, onChange}: PlotProps) {
         <option value="full">Full</option>
       </select>
     </div>
-
   );
 }
 

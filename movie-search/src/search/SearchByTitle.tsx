@@ -4,12 +4,17 @@ import { useState } from 'react';
 import { useMovieStore } from '../store/movieStore.ts';
 
 function SearchByTitle() {
-
   const [title, setTitle] = useState('');
   const [year, setYear] = useState('');
   const [plot, setPlot] = useState('short');
 
-  const fetchMovieByTitle = useMovieStore(state => state.fetchMovieByTitle)
+  const fetchMovieByTitle = useMovieStore((state) => state.fetchMovieByTitle);
+
+  const clearInput = () => {
+    setTitle('');
+    setYear('');
+    setPlot('short');
+  };
 
   return (
     <div className="space-y-8">
@@ -31,7 +36,7 @@ function SearchByTitle() {
             id="title"
             className="mt-2 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm placeholder:text-gray-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder:text-gray-400"
             value={title}
-            onChange={(e)=>setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
 
@@ -48,13 +53,21 @@ function SearchByTitle() {
             id="year"
             className="spinner-hidden mt-2 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm placeholder:text-gray-400 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder:text-gray-400"
             value={year}
-            onChange={(e)=>setYear(e.target.value)}
+            onChange={(e) => setYear(e.target.value)}
           />
         </div>
       </div>
 
-      <Plot value={plot} onChange={setPlot}/>
-      <SearchButton movieInput={{ Title: title,Year:  year ? parseInt(year) : 0,Plot: plot}} fetch={fetchMovieByTitle}/>
+      <Plot value={plot} onChange={setPlot} />
+      <SearchButton
+        movieInput={{
+          Title: title,
+          Year: year ? parseInt(year) : 0,
+          Plot: plot,
+        }}
+        fetch={fetchMovieByTitle}
+        clear={clearInput}
+      />
     </div>
   );
 }
