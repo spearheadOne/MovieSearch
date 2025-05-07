@@ -14,7 +14,7 @@ interface MovieStore {
   fetchMovieById: () => Promise<void>;
 }
 
-export const useMovieStore = create<MovieStore>((set) => ({
+export const useMovieStore = create<MovieStore>((set,get) => ({
   movieResponse: null,
   movieRequest: null,
   error: null,
@@ -27,7 +27,7 @@ export const useMovieStore = create<MovieStore>((set) => ({
     set({ error: null });
 
     try {
-      const res = await api.post('localhost:8001/api/searchByTitle', {
+      const res = await api.post('/searchByTitle', {
         params: {
           title: movie?.Title || '',
           year: movie?.Year || '',
@@ -49,9 +49,9 @@ export const useMovieStore = create<MovieStore>((set) => ({
     set({ error: null });
 
     try {
-      const res = await api.post('localhost:8001/api/searchById', {
+      const res = await api.post('/searchById', {
         params: {
-          id: movie?.id || '',
+          id: movie?.Id || '',
           year: movie?.Year || '',
           plot: movie?.Plot || 'short',
         },
