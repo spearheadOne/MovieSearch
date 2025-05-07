@@ -14,56 +14,34 @@ interface MovieStore {
   fetchMovieById: () => Promise<void>;
 }
 
-export const useMovieStore = create<MovieStore>((set,get) => ({
-  movieResponse: null,
-  movieRequest: null,
-  error: null,
+export const useMovieStore = create<MovieStore>((set, get) => {
 
-  setMovieRequest: (movie) => set({movieRequest: movie}),
-  clearMovieRequest: () => set({ movieRequest: null }),
-  clearMovieResponse: () => set ({movieResponse: null}),
-  fetchMovieByTitle: async () => {
-    const movie = get().movieRequest
+  const fetchMovie = async (endpoint: string) => {
+    const movie = get().movieRequest;
     set({ error: null });
 
     try {
-      const res = await api.post('/searchByTitle', {
-        params: {
-          title: movie?.Title || '',
-          year: movie?.Year || '',
-          plot: movie?.Plot || 'short',
-        },
-      });
+      const res = await api.post<MovieResponse>(endpoint, movie);
 
-      if (res.data?.Search) {
-        set({ movieResponse : res.data.Search });
+      if (res.data?.Response === 'True') {
+        set({ movieResponse: res.data });
       } else {
-        set({ movieResponse: null, error: res.data?.error || 'No movies found' });
+        set({ movieResponse: null, error: res.data?.Error || 'No movies found' });
       }
     } catch (err: any) {
       set({ error: err.message || 'Failed to fetch movies' });
     }
-  },
-  fetchMovieById: async () => {
-    const movie = get().movieRequest
-    set({ error: null });
+  };
 
-    try {
-      const res = await api.post('/searchById', {
-        params: {
-          id: movie?.Id || '',
-          year: movie?.Year || '',
-          plot: movie?.Plot || 'short',
-        },
-      });
+  return {
+    movieResponse: null,
+    movieRequest: null,
+    error: null,
 
-      if (res.data?.Search) {
-        set({ movieResponse: res.data.Search });
-      } else {
-        set({ movieResponse: null, error: res.data?.error || 'No movies found' });
-      }
-    } catch (err: any) {
-      set({ error: err.message || 'Failed to fetch movies' });
-    }
-  },
-}));
+    setMovieRequest: (movie) => set({ movieRequest: movie }),
+    clearMovieRequest: () => set({ movieRequest: null }),
+    clearMovieResponse: () => set({ movieResponse: null }),
+    fetchMovieByTitle: () => fetchMovie('/searchByTitle'),
+    fetchMovieById: () => fetchMovie('/searchById'),
+  };
+});
