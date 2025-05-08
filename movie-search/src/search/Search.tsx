@@ -11,7 +11,7 @@ function Search() {
   ];
 
   return (
-    <div className="mt-6 w-full max-w-2xl">
+    <div className="mt-6 flex-shrink-0 basis-[600px]">
       <div className="min-h-[900px] space-y-6 rounded-2xl border border-gray-300 bg-white p-6 shadow-md dark:border-gray-600 dark:bg-gray-900">
         <h1 className="mb-2 text-2xl font-bold text-gray-800 dark:text-white">
           Search movie

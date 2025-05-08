@@ -35,8 +35,10 @@ export async function handleOmdbResponse(
     const data = response.data;
 
     if (data.Response === "False") {
+      console.error(data.Error)
       res.status(404).json({ error: data.Error });
     } else {
+      console.log("Got response from OMDB")
       res.json(data);
     }
   } catch (err) {
