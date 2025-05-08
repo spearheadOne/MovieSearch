@@ -3,7 +3,6 @@ import Search from './search/Search.tsx';
 import Mode from './mode/Mode.tsx';
 import Movie from './movie/Movie.tsx';
 
-//TODO modify css in search for form switch
 function App() {
   return (
     <>

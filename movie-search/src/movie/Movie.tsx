@@ -1,5 +1,5 @@
 import { useMovieStore } from '../store/movieStore.ts';
-import {ResponseFields } from '../../../data/data.ts';
+import { ResponseFields } from '../../../data/data.ts';
 import React from 'react';
 
 function Movie() {
@@ -15,7 +15,7 @@ function Movie() {
         {movieResponse ? (
           movieResponse.Response === 'True' ? (
             <dl className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
-              {ResponseFields.map(({ key, label}) => {
+              {ResponseFields.map(({ key, label }) => {
                 const value = movieResponse?.[key];
                 if (!value) return null;
 
@@ -32,14 +32,14 @@ function Movie() {
                         >
                           {value as React.ReactNode}
                         </a>
-                      ) : key==='Poster' ? (
+                      ) : key === 'Poster' ? (
                         <img
                           src={movieResponse?.Poster}
                           alt={movieResponse?.Title ?? ''}
                           className="max-w-xs rounded-md border"
                         />
                       ) : (
-                        value as React.ReactNode
+                        (value as React.ReactNode)
                       )}
                     </dd>
                   </React.Fragment>
